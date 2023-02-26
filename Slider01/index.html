@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider01</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <h1 class="page-title">Slider</h1>
+    </div>
+    <div class="page-content">
+      <div class="slider-wrapper">
+        <div class="slider-container">
+          <div id="slider-1" class="slider">
+            <div class="slider__viewport">
+              <div class="slider__slides">
+                <div class="slider__slide nuance-1">
+                  Slide 1
+                  <p class="slider__slide__caption">
+                    Title 1
+                  </p>
+                </div>
+                <div class="slider__slide nuance-2">Slide 2
+                  <p class="slider__slide__caption">
+                    Title 2
+                  </p>
+                </div>
+                <div class="slider__slide nuance-3">Slide 3
+                  <p class="slider__slide__caption">
+                    Title 3
+                  </p>
+                </div>
+                <div class="slider__slide nuance-4">Slide 4
+                  <p class="slider__slide__caption">
+                    Title 4
+                  </p>
+                </div>
+                <div class="slider__slide nuance-5">Slide 5
+                  <p class="slider__slide__caption">
+                    Title 5
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="slider__buttons">
+              <a href="#" class="slider__button--prev">
+                <i class="material-icons">chevron_left</i>
+              </a>
+              <a href="#" class="slider__button--next">
+                <i class="material-icons">chevron_right</i>
+              </a>
+            </div>
+            <!-- pager -->
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <script src="./script.js"></script>
+  <script>
+    var slide1 = new UIComponent.Slider(document.querySelector('#slider-1'),{
+      items: 2,
+      autoplay: false,
+      responsive: false,
+    });
+  </script>
+</body>
+</html>
