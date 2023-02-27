@@ -46,28 +46,58 @@ UIComponent.Slider = function(el, options){
   }
 
   function create_nav_links(){
+    var navArray = [];
     for(var i=0; i<steps;i++){
       // console.log(steps)
       var li = document.createElement('li');
       var nav_link = document.createElement('a');
       nav_link.setAttribute('href', '#');
+      navArray.push(nav_link);
 
       nav_link.addEventListener('click', function(e){
         e.preventDefault();
         
         var index = getIndex(this.parentElement);
         moveTo(index);
+        // active_nav_links(index);
       });
 
       li.append(nav_link);
       slider_nav.append(li);
     }
+    // navArray[0].classList.add('active');
+  }
+
+  function active_nav_links(idx){
+    var slider_nav = el.querySelector('.slider__nav');
+    var nav_links = slider_nav.querySelectorAll('a');
+    nav_links.forEach(function(nav_link, i){
+      nav_link.classList.remove('active');
+      if(idx == i){
+        nav_link.classList.add('active');
+      }
+    });
   }
 
   function get_slides_to_move(step){
+    // back
+    if(step < current_step){
+      if(step == step - 2){
+        var slide_total = slides.length;
+        var slides_left = (slides.length - step * item_per_step);  //1
+        var slides_to_move = slide_total - slides_left;  //3
+        return slides_to_move;
+      }else{
+        return step * item_per_step;
+      }
+    }
+    // forward
     if(step > current_step){
       if(step == steps - 1){
-        console.log(step)
+        var previous_step_slide_total = (step - 1) * item_per_step;  //2
+        var slides_left = (slides.length - step * item_per_step);  //1
+        var slides_to_move = previous_step_slide_total + slides_left;  //3
+        return slides_to_move;
       }else{
         return step * item_per_step;
       }
@@ -112,11 +142,42 @@ UIComponent.Slider = function(el, options){
   }
 
   function moveTo(step){
+
     var percentage = 100 / item_per_step;
     var x = item_per_step > 1 ? percentage * get_slides_to_move(step) : step * percentage;
     slide_container.style.transition = '1s';
     slide_container.style.transform = 'translateX(-' + x + '%)';
     current_step = step;
+
+    update_buttons();
+  }
+
+  function update_buttons(){
+    if(prev_button){
+      if(current_step <= 0){
+        prev_button.classList.add('hidden');
+      }else{
+        prev_button.classList.remove('hidden');
+      }
+    }
+
+    if(next_button){
+      if(current_step >= steps - 1){
+        next_button.classList.add('hidden');
+      }else{
+        next_button.classList.remove('hidden');
+      }
+    }
+
+    //nav
+    if(options.createNav){
+      var current_nav = slider_nav.querySelectorAll('a')[current_step];
+      var active = slider_nav.querySelector('a.active');
+      if(active){
+        active.classList.remove('active');
+      }
+      current_nav.classList.add('active');
+    }
   }
 
   function init(){
@@ -127,7 +188,7 @@ UIComponent.Slider = function(el, options){
     prev_button = el.querySelector('.slider__button--prev');
     next_button = el.querySelector('.slider__button--next');
     item_width = slides[0].offsetWidth;
-
+    
     // responsive
     if(options.resoponsive){
 
@@ -155,11 +216,11 @@ UIComponent.Slider = function(el, options){
         moveBack();
       });
     }
-
+    
+    update_buttons();
     // setItem();
   }
 
   init();
 
-  
 }
