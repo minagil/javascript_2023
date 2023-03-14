@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Carousel 접근성</title>
+		<link rel="stylesheet" href="swiper.css" />
+	</head>
+	<body>
+		<div
+			role="region"
+			aria-label="고양이 갤러리"
+			aria-roledescription="carousel"
+			class="swiper"
+		>
+			<button class="swiper-controller swiper-controller--prev">이전</button>
+			<button class="swiper-controller swiper-controller--autoplay">
+				자동 넘김 일시 정지
+			</button>
+			<button class="swiper-controller swiper-controller--next">다음</button>
+			<div class="swiper-pagination" role="tablist"></div>
+			<div class="swiper-message"></div>
+			<div class="swiper-wrapper">
+				<div
+					class="swiper-slide"
+					role="tabpanel"
+					role="region"
+					aria-labelledby="slide1"
+				>
+					<a href="#">
+						<img
+							id="slide1"
+							src="https://placekitten.com/640/360?image=1"
+							alt="눈이 동그란 애기 고양이"
+						/>
+					</a>
+				</div>
+				<div
+					class="swiper-slide"
+					role="tabpanel"
+					role="region"
+					aria-labelledby="slide2"
+				>
+					<a href="#">
+						<img
+							id="slide2"
+							src="https://placekitten.com/640/360?image=2"
+							alt="바구니에 옹기종기 모여있는 고양이 네마리"
+						/>
+					</a>
+				</div>
+				<div
+					class="swiper-slide"
+					role="tabpanel"
+					role="region"
+					aria-labelledby="slide3"
+				>
+					<a href="#">
+						<img
+							id="slide3"
+							src="https://placekitten.com/640/360?image=3"
+							alt="눈 위를 걷는 고양이"
+						/>
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

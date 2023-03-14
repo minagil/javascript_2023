@@ -37,6 +37,7 @@ UIComponent.Slider = function(el, options){
 
   function getIndex(element){
     var nodes = element.parentNode.childNodes;
+
     for (var i=0; i < nodes.length; i++){
       if(nodes[i] == element){
         return i;
