@@ -25,7 +25,7 @@ function handlerInert(swiper) {
 // 		);
 // }
 
-function toggleAutoplayState(event) {
+function toggleAutoplayState(event) { //테스트
 	const $control = $(event.target);
 	const $notifyEl = $(this.el).find(".swiper-message");
 
