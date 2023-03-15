@@ -138,7 +138,7 @@ UIComponent.Slider = function (el, options) {
 		if (current_step >= steps - 1) {
 			return false;
 		}
-		moveTo(current_step + 1);
+		moveTo(current_step + 1); //1씩 증가
 	}
 
 	function moveTo(step) {
